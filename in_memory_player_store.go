@@ -16,5 +16,12 @@ func (i *InMemoryPlayerStore) RecordWin(name string) {
 }
 
 func (i *InMemoryPlayerStore) GetLeague() []Player {
-	return nil
+	league := make([]Player, 0, len(i.store))
+
+	for player, score := range i.store {
+		league = append(league, Player{player, score})
+	}
+
+	return league
+
 }
